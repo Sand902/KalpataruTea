@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeaLeaf | Premium Loose Tea</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3C6258;
+            --primary-light: #2D5D50;
+            --secondary: #D4A55A;
+            --secondary-light: #E8C897;
+            --accent: #C9493C;
+            --light: #F9F7F4;
+            --dark: #244D42;
+            --gray: #6B7280;
+            --gray-light: #F3F4F6;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-full: 50px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Top Header */
+        .top-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 12px 0;
+            font-size: 0.875rem;
+        }
+
+        .top-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .offer-tag {
+            background: var(--accent);
+            padding: 6px 20px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(201, 73, 60, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(201, 73, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(201, 73, 60, 0); }
+        }
+
+        /* Main Header */
+        .main-header {
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+		a {
+            text-decoration: none;
+		}
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover:after,
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Slider */
+        .slider {
+            position: relative;
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f9f7f4 0%, #f0ece5 100%);
+            overflow: hidden;
+        }
+
+        .slider:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 80%, rgba(212, 165, 90, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(26, 60, 52, 0.05) 0%, transparent 50%);
+        }
+
+        .slider-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slider-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .slider-text p {
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+            color: var(--gray);
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+        }
+
+        .slider-image {
+            position: relative;
+        }
+
+        .slider-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+        }
+
+        .slider-image:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, var(--secondary) 0%, transparent 70%);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+            opacity: 0.3;
+        }
+		.slider-image:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* Categories Slider */
+        .categories {
+            padding: 10px 0;
+            background-color: white;
+            position: relative;
+        }
+
+        .categories:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--secondary-light), transparent);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            /*margin-bottom: 60px;*/
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .categories-slider-container {
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .categories-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 40px 20px;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+
+        .categories-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-card {
+            flex: 0 0 180px;
+            background: white;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
+        }
+
+        .category-card.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-color: var(--secondary);
+            box-shadow: 0 15px 30px rgba(26, 60, 52, 0.2);
+        }
+
+        .category-card.active .category-icon,
+        .category-card.active .category-name {
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.125rem;
+            transition: var(--transition);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 2;
+            border: none;
+        }
+
+        .slider-nav:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-nav.prev {
+            left: 0;
+        }
+
+        .slider-nav.next {
+            right: 0;
+        }
+
+        /* Products */
+        .products {
+            padding: 20px 0;
+            background-color: var(--gray-light);
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .product-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .product-info {
+            padding: 24px;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .view-details-btn {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--primary);
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-details-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Offers */
+        .offers {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .offers .section-title {
+            color: white;
+        }
+
+        .offers .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .offers-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0 40px;
+            scrollbar-width: thin;
+        }
+
+        .offer-card {
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .offer-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            color: var(--secondary);
+        }
+
+        .offer-title {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+		
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        /* FIXED MODAL - Modern Design with Top Positioning */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(12px);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            width: 100%;
+            max-width: 1100px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transform: translateY(-50px) scale(0.95);
+            transition: var(--transition);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            margin-top: 60px; /* Added to show modal properly from top */
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            transition-delay: 0.1s;
+        }
+
+        .modal-header {
+            padding: 30px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .modal-header:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        /* Image Gallery in Modal */
+        .modal-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-image-container {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 320px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .thumbnail-slider {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .thumbnail.active {
+            border-color: var(--secondary);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(212, 165, 90, 0.3);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-nav:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav.prev {
+            left: 20px;
+        }
+
+        .gallery-nav.next {
+            right: 20px;
+        }
+
+        /* Modal Details */
+        .modal-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-details h3 {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+
+        .discount-badge {
+            background: var(--accent);
+            color: white;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .modal-description {
+            color: var(--gray);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .modal-features {
+            list-style: none;
+            margin-bottom: 30px;
+            background: var(--light);
+            padding: 20px;
+            border-radius: var(--radius);
+        }
+
+        .modal-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-features i {
+            color: var(--secondary);
+        }
+
+        .tea-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            background: var(--light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            width: 140px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            width: 44px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: var(--secondary-light);
+        }
+
+        .quantity-input {
+            width: 52px;
+            height: 52px;
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .add-to-cart-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+        }
+
+        .wishlist-btn {
+            width: 52px;
+            height: 52px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wishlist-btn:hover,
+        .wishlist-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .modal-footer {
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-footer i {
+            color: var(--secondary);
+            margin-right: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slider-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .slider-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .modal-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .modal {
+                max-height: 95vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 100px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 99;
+                border-radius: 0 0 var(--radius) var(--radius);
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .top-header-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .slider {
+                padding: 80px 0;
+            }
+            
+            .categories-slider-container {
+                padding: 0 20px;
+            }
+            
+            .slider-nav {
+                display: none;
+            }
+            
+            .modal-header {
+                padding: 25px;
+            }
+            
+            .modal-content {
+                padding: 25px;
+            }
+            
+            .main-image-container {
+                height: 250px;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .quantity-selector {
+                width: 100%;
+            }
+            
+            .add-to-cart-btn {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .modal-header {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .tea-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-card {
+                flex: 0 0 150px;
+            }
+            
+            .modal-footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+		a{
+		color:#FFF	
+		}
+		.modal-details{
+		overflow:auto;
+		padding-right:20px;	
+		}
+		/* Theme Toggle */
+.theme-toggle {
+	position: fixed;
+	top: auto;
+	right: 20px;
+	z-index: 1001;
+}
+#theme-switch {
+	background: var(--light);
+	border: none;
+	padding: 5px;
+	border-radius: 50%;
+	cursor: pointer;
+	font-size: 1.2rem;
+	color: var(--dark);
+	transition: var(--transition);
+	width:40px;
+}
+#theme-switch .fa-moon {
+	display: none;
+}
+[data-theme="light"] #theme-switch .fa-sun {
+	display: none;
+}
+[data-theme="light"] #theme-switch .fa-moon {
+	display: inline;
+}
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <div class="shop-name">Kalpataru Tea | Pure Taste. Daily Fresh.</div>
+                <div class="offer-tag">
+                    <i class="fas fa-gift"></i>
+                    Free Shipping on Orders Over ₹500
+                </div>
+                <div class="phone-number"> <a href="Tel:+919002398011">
+                    <i class="fas fa-phone"></i>
+                    +91 900-239-8011</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-leaf logo-icon"></i>
+                    Kalpataru Tea
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+        <button id="theme-switch" aria-label="Toggle theme"> <i class="fas fa-sun"></i> <i class="fas fa-moon"></i> </button>
+      </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slider -->
+    <section class="slider" id="home">
+        <div class="container">
+            <div class="slider-content">
+                <div class="slider-text">
+                    <h1>Experience the Art of Fine Tea</h1>
+                    <p>Discover our curated collection of premium loose leaf teas, sourced directly from the world's finest tea gardens. Each cup tells a story of tradition, flavor, and craftsmanship.</p>
+                    <a href="#categories" class="cta-button">
+                        Explore Collection
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="slider-image">
+                    <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Premium Loose Tea Collection">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Slider -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Tea Categories</h2>
+            <p class="section-subtitle">Explore our diverse selection of premium loose leaf teas, each with its unique character and flavor profile</p>
+            
+            <div class="categories-slider-container">
+                <button class="slider-nav prev" id="prevCategory">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="categories-slider" id="categoriesSlider">
+                    <!-- Categories will be dynamically added here -->
+                </div>
+                
+                <button class="slider-nav next" id="nextCategory">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title" id="productsTitle">Featured Teas</h2>
+            <p class="section-subtitle" id="productsSubtitle">Hand-picked selections from our finest collections</p>
+            <div class="products-container" id="productsContainer">
+                <!-- Products will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <h2 class="section-title">Special Offers</h2>
+            <p class="section-subtitle">Exclusive deals and promotions for our valued customers</p>
+            <div class="offers-slider">
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="offer-title">Buy 2 Get 1 Free</h3>
+                    <p>Purchase any two tea packs and get one free of equal or lesser value</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="offer-title">Free Shipping</h3>
+                    <p>Free shipping on all orders over ₹500. Applied automatically at checkout</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="offer-title">25% Off First Order</h3>
+                    <p>New customers get 25% off their first order with code: TEALEAF25</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="offer-title">Tea of the Month Club</h3>
+                    <p>Subscribe and get a new exotic tea delivered every month with 20% off</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Have questions? Our tea experts are here to help you find your perfect brew</p>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Our Tea House</h4>
+                            <p>123 Tea Garden Lane, Darjeeling, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>1-800-TEA-LEAF (1-800-832-5323)</p>
+                            <p>Monday - Friday: 9am - 6pm EST</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>info@tealeaf.com</p>
+                            <p>Response within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="cta-button">
+                            Send Message
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TeaLeaf</h3>
+                    <p>Premium loose leaf tea sourced from the world's finest gardens. Experience tea in its purest form with our curated collection.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/people/Kalpataru-Tea-Center/61584148542341/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#offers">Offers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tea Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="category-link" data-category="darjeeling">Darjeeling Tea</a></li>
+                        <li><a href="#" class="category-link" data-category="assam">Assam Tea</a></li>
+                        <li><a href="#" class="category-link" data-category="green">Green Tea</a></li>
+                        <li><a href="#" class="category-link" data-category="oolong">Oolong Tea</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for exclusive offers, new arrivals, and tea brewing tips</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" required style="width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: none;">
+                        <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">
+                            Subscribe
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p><script type="text/javascript">
+    var date = new Date();
+    var year = date.getFullYear();
+    document.write("Copyright &copy; " + year + " KTC. All rights reserved.");
+</script> | Designed with Sandip Ghorai.<i class="fas fa-heart" style="color: #D4A55A;"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced Modern Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Product Details</h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="modalContent">
+                <!-- Modal content will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+	const themeSwitch = document.getElementById('theme-switch');
+themeSwitch.addEventListener('click', () => {
+	//alert('san');
+    const currentTheme = document.body.getAttribute('data-theme');
+    document.body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+    localStorage.setItem('theme', document.body.getAttribute('data-theme'));
+});
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.body.setAttribute('data-theme', savedTheme);
+
+        // Enhanced tea data with multiple images per product
+        const teaCategories = [
+            { id: 'darjeeling', name: 'Darjeeling', icon: 'fas fa-mountain', color: '#4a7c59' },
+            { id: 'assam', name: 'Assam', icon: 'fas fa-sun', color: '#8b4513' },
+            { id: 'green', name: 'Green Tea', icon: 'fas fa-leaf', color: '#3a8c3a' },
+            { id: 'oolong', name: 'Oolong', icon: 'fas fa-fire', color: '#d2691e' },
+            { id: 'white', name: 'White Tea', icon: 'fas fa-feather-alt', color: '#f5f5dc' },
+            { id: 'herbal', name: 'Herbal', icon: 'fas fa-seedling', color: '#d4a762' },
+            { id: 'chai', name: 'Chai', icon: 'fas fa-mug-hot', color: '#a0522d' },
+            { id: 'rooibos', name: 'Rooibos', icon: 'fas fa-globe-africa', color: '#c04000' },
+            { id: 'earl-grey', name: 'Earl Grey', icon: 'fas fa-citrus', color: '#4B0082' },
+            { id: 'matcha', name: 'Matcha', icon: 'fas fa-bolt', color: '#228B22' },
+            { id: 'jasmine', name: 'Jasmine', icon: 'fas fa-flower', color: '#FF69B4' },
+            { id: 'pu-erh', name: 'Pu-erh', icon: 'fas fa-wine-bottle', color: '#8B4513' }
+        ];
+
+        const teaProducts = {
+            darjeeling: [
+                { 
+                    id: 1, 
+                    name: 'Darjeeling First Flush', 
+                    description: 'First harvest Darjeeling tea with delicate muscatel flavor and light color. Often called the "Champagne of Teas". Harvested in early spring, these tender leaves produce a light, floral, and slightly astringent cup.',
+                    longDescription: 'Our Darjeeling First Flush is sourced from the highest elevations of the Darjeeling district. The first harvest of the season produces leaves with a delicate muscatel character, light golden liquor, and floral notes. Perfect for those who appreciate subtlety and complexity in their tea. This tea is best enjoyed without milk to appreciate its delicate flavors. Each leaf is hand-picked during the first week of spring harvest.',
+                    price: '₹24.99',
+                    originalPrice: '₹29.99',
+                    images: [
+                        'https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                    ],
+                    features: ['First harvest of the season', 'Delicate muscatel flavor', 'Light golden liquor', 'Floral aroma', 'Hand-picked leaves', 'High elevation gardens'],
+                    origin: 'Darjeeling, India',
+                    caffeine: 'Medium',
+                    steepTime: '3-4 minutes',
+                    waterTemp: '85°C (185°F)',
+                    flavorNotes: 'Muscatel, Floral, Light Astringency',
+                    rating: 4.8
+                },
+                { 
+                    id: 2, 
+                    name: 'Darjeeling Second Flush', 
+                    description: 'Full-bodied with a more mature flavor, amber liquor, and strong muscatel character. Harvested in late spring, offering rich flavors.',
+                    longDescription: 'The second flush harvest yields a more mature leaf with a distinct muscatel character. This tea features a fuller body, darker liquor, and notes of ripe fruit. An excellent choice for afternoon tea or when you desire a more robust Darjeeling experience. Pairs well with light snacks and desserts. The leaves are harvested from the same gardens as our first flush but allowed to mature for optimal flavor development.',
+                    price: '₹22.99',
+                    originalPrice: '₹27.99',
+                    images: [
+                        'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                    ],
+                    features: ['Second harvest', 'Full-bodied flavor', 'Amber liquor', 'Strong muscatel character', 'Ripe fruit notes', 'Mature leaves'],
+                    origin: 'Darjeeling, India',
+                    caffeine: 'Medium-High',
+                    steepTime: '4-5 minutes',
+                    waterTemp: '90°C (194°F)',
+                    flavorNotes: 'Muscatel, Ripe Fruit, Malty',
+                    rating: 4.6
+                }
+            ],
+            assam: [
+                { 
+                    id: 3, 
+                    name: 'Assam Breakfast Tea', 
+                    description: 'Rich, malty flavor with a robust character. Perfect for mornings and makes an excellent milk tea with its bold, invigorating profile.',
+                    longDescription: 'Our Assam Breakfast Tea comes from the lowlands of Assam, India, where the climate produces teas with exceptional strength and body. This robust blend features malty notes, a deep amber color, and enough character to stand up to milk and sugar. The perfect morning wake-up call or afternoon pick-me-up. Sourced from organic gardens that practice sustainable farming.',
+                    price: '₹18.99',
+                    originalPrice: '₹22.99',
+                    images: [
+                        'https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                    ],
+                    features: ['Rich malty flavor', 'Robust character', 'Deep amber color', 'Perfect with milk', 'Morning energizer', 'Organic cultivation'],
+                    origin: 'Assam, India',
+                    caffeine: 'High',
+                    steepTime: '4-5 minutes',
+                    waterTemp: '95°C (203°F)',
+                    flavorNotes: 'Malty, Robust, Slight Sweetness',
+                    rating: 4.7
+                }
+            ],
+            green: [
+                { 
+                    id: 4, 
+                    name: 'Japanese Sencha', 
+                    description: 'Steamed green tea with a fresh, grassy flavor and vibrant green color. Rich in antioxidants and offers a refreshing cup.',
+                    longDescription: 'Our Japanese Sencha is steamed immediately after harvesting, which preserves its vibrant green color and fresh, grassy flavor. Grown in the shaded regions of Japan, this tea is rich in antioxidants and offers a clean, refreshing taste with subtle umami notes. Enjoy hot or as iced tea for a healthy, refreshing beverage. Each batch is tested for freshness and quality.',
+                    price: '₹21.99',
+                    originalPrice: '₹26.99',
+                    images: [
+                        'https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        'https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                    ],
+                    features: ['Steamed processing', 'Fresh grassy flavor', 'Vibrant green color', 'Rich in antioxidants', 'Subtle umami notes', 'Shade-grown'],
+                    origin: 'Kyoto, Japan',
+                    caffeine: 'Medium',
+                    steepTime: '2-3 minutes',
+                    waterTemp: '75°C (167°F)',
+                    flavorNotes: 'Grassy, Fresh, Umami',
+                    rating: 4.9
+                }
+            ]
+        };
+
+        // DOM Elements
+        const categoriesSlider = document.getElementById('categoriesSlider');
+        const prevCategoryBtn = document.getElementById('prevCategory');
+        const nextCategoryBtn = document.getElementById('nextCategory');
+        const productsContainer = document.getElementById('productsContainer');
+        const productsTitle = document.getElementById('productsTitle');
+        const productsSubtitle = document.getElementById('productsSubtitle');
+        const productModal = document.getElementById('productModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+        const modalTitle = document.getElementById('modalTitle');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const contactForm = document.getElementById('contactForm');
+        const newsletterForm = document.getElementById('newsletterForm');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCategories();
+            renderProducts('darjeeling');
+            
+            // Set first category as active
+            document.querySelector('.category-card').classList.add('active');
+            
+            // Initialize mobile menu
+            initMobileMenu();
+            
+            // Initialize category slider navigation
+            initCategorySlider();
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && productModal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+
+        // Render categories in rounded slider
+        function renderCategories() {
+            teaCategories.forEach(category => {
+                const categoryCard = document.createElement('div');
+                categoryCard.className = 'category-card';
+                categoryCard.setAttribute('data-category', category.id);
+                
+                categoryCard.innerHTML = `
+                    <div class="category-icon">
+                        <i class="${category.icon}"></i>
+                    </div>
+                    <div class="category-name">${category.name}</div>
+                `;
+                
+                categoryCard.addEventListener('click', function() {
+                    // Remove active class from all categories
+                    document.querySelectorAll('.category-card').forEach(card => {
+                        card.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked category
+                    this.classList.add('active');
+                    
+                    // Scroll to center the selected category
+                    const container = categoriesSlider.parentElement;
+                    const cardWidth = this.offsetWidth + 20; // Include gap
+                    const containerWidth = container.offsetWidth;
+                    const scrollLeft = this.offsetLeft - (containerWidth / 2) + (cardWidth / 2);
+                    
+                    categoriesSlider.scrollTo({
+                        left: scrollLeft,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Render products for selected category
+                    renderProducts(this.getAttribute('data-category'));
+                    
+                    // Update nav menu active state
+                    updateNavActiveState('categories');
+                });
+                
+                categoriesSlider.appendChild(categoryCard);
+            });
+        }
+
+        // Initialize category slider navigation
+        function initCategorySlider() {
+            prevCategoryBtn.addEventListener('click', function() {
+                categoriesSlider.scrollBy({
+                    left: -200,
+                    behavior: 'smooth'
+                });
+            });
+            
+            nextCategoryBtn.addEventListener('click', function() {
+                categoriesSlider.scrollBy({
+                    left: 200,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Hide/show navigation buttons based on scroll position
+            categoriesSlider.addEventListener('scroll', function() {
+                const scrollLeft = this.scrollLeft;
+                const maxScroll = this.scrollWidth - this.clientWidth;
+                
+                prevCategoryBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
+                nextCategoryBtn.style.opacity = scrollLeft < maxScroll ? '1' : '0.5';
+            });
+        }
+
+        // Render products based on category
+        function renderProducts(categoryId) {
+            productsContainer.innerHTML = '';
+            
+            const category = teaCategories.find(c => c.id === categoryId);
+            productsTitle.textContent = `${category.name} Collection`;
+            productsSubtitle.textContent = `Discover our premium selection of ${category.name.toLowerCase()} teas`;
+            
+            const products = teaProducts[categoryId] || [];
+            
+            if (products.length === 0) {
+                productsContainer.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: var(--gray);">
+                        <i class="fas fa-mug-hot" style="font-size: 3rem; margin-bottom: 20px; color: var(--secondary);"></i>
+                        <h3 style="margin-bottom: 10px;">Coming Soon</h3>
+                        <p>New ${category.name} selections are arriving soon!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                // Check if product has discount
+                const hasDiscount = product.originalPrice && product.originalPrice !== product.price;
+                
+                productCard.innerHTML = `
+                    ${hasDiscount ? '<div class="product-badge">Sale</div>' : ''}
+                    <div class="product-image" style="background-image: url('${product.images[0]}')"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                ${product.price}
+                                ${hasDiscount ? `<span style="font-size: 1rem; color: var(--gray); text-decoration: line-through; margin-left: 8px;">${product.originalPrice}</span>` : ''}
+                            </div>
+                            <button class="view-details-btn" data-id="${product.id}" data-category="${categoryId}">
+                                View Details
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                productsContainer.appendChild(productCard);
+            });
+            
+            // Add event listeners to view details buttons
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const categoryId = this.getAttribute('data-category');
+                    openProductModal(productId, categoryId);
+                });
+            });
+        }
+
+        // Open enhanced product modal with image gallery
+        function openProductModal(productId, categoryId) {
+            const product = teaProducts[categoryId].find(p => p.id === productId);
+            
+            if (product) {
+                modalTitle.textContent = product.name;
+                
+                // Check if product has discount
+                const hasDiscount = product.originalPrice && product.originalPrice !== product.price;
+                const discountPercentage = hasDiscount ? 
+                    Math.round((1 - parseFloat(product.price.replace('$', '')) / parseFloat(product.originalPrice.replace('$', ''))) * 100) : 0;
+                
+                // Create star rating
+                const starRating = createStarRating(product.rating);
+                
+                modalContent.innerHTML = `
+                    <div class="modal-gallery">
+                        <div class="main-image-container">
+                            <img src="${product.images[0]}" alt="${product.name}" class="main-image" id="mainImage">
+                            <button class="gallery-nav prev" id="prevImage">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="gallery-nav next" id="nextImage">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="thumbnail-slider" id="thumbnailSlider">
+                            ${product.images.map((img, index) => `
+                                <div class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
+                                    <img src="${img}" alt="${product.name} - View ${index + 1}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="modal-details">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                            <h3>${product.name}</h3>
+                            <div style="display: flex; align-items: center; gap: 5px; color: var(--secondary);">
+                                ${starRating}
+                                <span style="font-size: 0.9rem; color: var(--gray);">(${product.rating})</span>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-price">
+                            ${product.price}
+                            ${hasDiscount ? `<span class="original-price">${product.originalPrice}</span>` : ''}
+                            ${hasDiscount ? `<span class="discount-badge">Save ${discountPercentage}%</span>` : ''}
+                        </div>
+                        
+                        <p class="modal-description">${product.longDescription}</p>
+                        
+                        <div class="tea-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Origin</span>
+                                <span class="info-value">${product.origin}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Caffeine Level</span>
+                                <span class="info-value">${product.caffeine}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Steep Time</span>
+                                <span class="info-value">${product.steepTime}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Water Temperature</span>
+                                <span class="info-value">${product.waterTemp}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Flavor Notes</span>
+                                <span class="info-value">${product.flavorNotes}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Package Size</span>
+                                <span class="info-value">100g / 3.5oz</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="modal-features">
+                            ${product.features.map(feature => `
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    ${feature}
+                                </li>
+                            `).join('')}
+                        </ul>
+                        
+                        <div class="modal-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" id="decreaseQty">-</button>
+                                <input type="text" class="quantity-input" id="quantityInput" value="1" readonly>
+                                <button class="quantity-btn" id="increaseQty">+</button>
+                            </div>
+                            <button class="cta-button add-to-cart-btn" id="addToCartBtn">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="wishlist-btn" id="wishlistBtn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <div>
+                                <i class="fas fa-shipping-fast"></i>
+                                Free shipping on orders over ₹50
+                            </div>
+                            <div>
+                                <i class="fas fa-undo"></i>
+                                30-day return policy
+                            </div>
+                            <div>
+                                <i class="fas fa-leaf"></i>
+                                100% organic & sustainable
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Initialize image gallery
+                let currentImageIndex = 0;
+                const mainImage = document.getElementById('mainImage');
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                const prevImageBtn = document.getElementById('prevImage');
+                const nextImageBtn = document.getElementById('nextImage');
+                
+                // Thumbnail click event
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        currentImageIndex = index;
+                        updateMainImage();
+                    });
+                });
+                
+                // Previous image button
+                prevImageBtn.addEventListener('click', function() {
+                    currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+                    updateMainImage();
+                });
+                
+                // Next image button
+                nextImageBtn.addEventListener('click', function() {
+                    currentImageIndex = (currentImageIndex + 1) % product.images.length;
+                    updateMainImage();
+                });
+                
+                // Update main image function
+                function updateMainImage() {
+                    mainImage.src = product.images[currentImageIndex];
+                    mainImage.alt = `${product.name} - View ${currentImageIndex + 1}`;
+                    
+                    // Update active thumbnail
+                    thumbnails.forEach((thumb, index) => {
+                        thumb.classList.toggle('active', index === currentImageIndex);
+                    });
+                }
+                
+                // Quantity selector functionality
+                const decreaseQtyBtn = document.getElementById('decreaseQty');
+                const increaseQtyBtn = document.getElementById('increaseQty');
+                const quantityInput = document.getElementById('quantityInput');
+                
+                decreaseQtyBtn.addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    if (value > 1) {
+                        quantityInput.value = value - 1;
+                    }
+                });
+                
+                increaseQtyBtn.addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    if (value < 10) {
+                        quantityInput.value = value + 1;
+                    }
+                });
+                
+                // Add to cart button
+                document.getElementById('addToCartBtn').addEventListener('click', function() {
+                    const quantity = parseInt(quantityInput.value);
+                    const btn = this;
+                    const originalText = btn.innerHTML;
+                    
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+                    btn.disabled = true;
+                    
+                    setTimeout(() => {
+                        alert(`Added ${quantity} ${product.name} to your cart!`);
+                        closeModal();
+                        
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }, 1000);
+                });
+                
+                // Wishlist button
+                const wishlistBtn = document.getElementById('wishlistBtn');
+                wishlistBtn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    
+                    if (this.classList.contains('active')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.style.background = 'var(--primary)';
+                        this.style.color = 'white';
+                        this.style.borderColor = 'var(--primary)';
+                        showNotification(`${product.name} added to wishlist!`);
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.style.background = 'transparent';
+                        this.style.color = 'var(--primary)';
+                        this.style.borderColor = 'var(--primary)';
+                        showNotification(`${product.name} removed from wishlist`);
+                    }
+                });
+                
+                productModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Create star rating HTML
+        function createStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            
+            return stars;
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--primary);
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: var(--radius);
+                    box-shadow: var(--shadow-lg);
+                    z-index: 3000;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    animation: slideIn 0.3s ease;
+                ">
+                    <i class="fas fa-check-circle"></i>
+                    ${message}
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        // Close modal function
+        function closeModal() {
+            productModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close product modal
+        modalClose.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside
+        productModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Mobile menu functionality
+        function initMobileMenu() {
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    updateNavActiveState(this.getAttribute('href').substring(1));
+                });
+            });
+        }
+
+        // Update active state in navigation
+        function updateNavActiveState(section) {
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${section}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Form submissions
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                showNotification('Thank you! Our tea experts will contact you within 24 hours.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                showNotification(`Thank you for subscribing with ${email}!`);
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1000);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    updateNavActiveState(targetId.substring(1));
+                }
+            });
+        });
+
+        // Category links in footer
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const categoryId = this.getAttribute('data-category');
+                
+                // Update active category
+                document.querySelectorAll('.category-card').forEach(card => {
+                    card.classList.remove('active');
+                    if (card.getAttribute('data-category') === categoryId) {
+                        card.classList.add('active');
+                        
+                        // Scroll to center the selected category
+                        const container = categoriesSlider.parentElement;
+                        const cardWidth = card.offsetWidth + 20;
+                        const containerWidth = container.offsetWidth;
+                        const scrollLeft = card.offsetLeft - (containerWidth / 2) + (cardWidth / 2);
+                        
+                        categoriesSlider.scrollTo({
+                            left: scrollLeft,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+                
+                // Render products for selected category
+                renderProducts(categoryId);
+                
+                // Scroll to products section
+                window.scrollTo({
+                    top: document.getElementById('products').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                
+                updateNavActiveState('products');
+            });
+        });
+
+        // Scroll animation for header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = 'var(--shadow)';
+            }
+        });
+
+        // Add CSS animation for notification
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
